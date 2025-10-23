@@ -42,20 +42,20 @@ zinit light Aloxaf/fzf-tab
 # Vi风格按键绑定
 zinit light jeffreytse/zsh-vi-mode
 function zvm_after_init() {
-    bindkey -r "^B"
-    # 保持^C终止进程的功能
-    bindkey -r "^C"
-    # 解绑^B backward-char
-    bindkey -r "^B"
-    # 解绑^T forward-char
-    bindkey -r "^T"
-    # fzf-file-widget
-    bindkey "^F" fzf-file-widget
+    # fzf-history-widget
+    bindkey "^R" fzf-history-widget
     # 更改fzf-cd-widget
     bindkey -r "^[c"
     bindkey "^D" fzf-cd-widget
-    # fzf-history-widget
-    bindkey "^R" fzf-history-widget
+    # fzf-file-widget
+    bindkey "^F" fzf-file-widget    
+
+    # ^C仅用于终止进程 
+    bindkey -r "^C"     
+    # 解绑^B backward-char
+    bindkey -r "^B"     
+    # 解绑^T forward-char
+    bindkey -r "^T"     
     # 禁用fzf-tab-debug
     bindkey -r "^X."
 }
@@ -76,23 +76,22 @@ setopt ignore_eof   # 禁用EOF行为
 # 设置环境变量
 ######################
 export PATH="$HOME/nvim-linux-x86_64/bin:$PATH"
-export EDITOR=nvim
-# export TERMINAL=alacritty   # 设置默认的终端模拟器
-# export BROWSER='/mnt/c/Users/sunny/app/firefox/firefox.exe' # 设置默认的浏览器
 
 ######################
 # 别名
 ######################
-alias nv=nvim
+alias nv="$HOME/nvim-linux-x86_64/bin/nvim"
 alias ya="yazi"
-alias py="python3"    # python3
-alias cmd="/mnt/c/Windows/System32/cmd.exe /c"  # windows的cmd
-alias of7="source ~/OpenFOAM/OpenFOAM7/OpenFOAM-7/etc/bashrc"
-alias of8="source ~/OpenFOAM/OpenFOAM8/OpenFOAM-8/etc/bashrc"
-alias of9="source ~/OpenFOAM/OpenFOAM9/OpenFOAM-9/etc/bashrc"
-alias of10="source ~/OpenFOAM/OpenFOAM10/OpenFOAM-10/etc/bashrc"
-alias of11="source ~/OpenFOAM/OpenFOAM11/OpenFOAM-11/etc/bashrc"
-alias of12="source ~/OpenFOAM/OpenFOAM12/OpenFOAM-12/etc/bashrc"
+alias py="python3"    
+# windows的cmd
+alias cmd="/mnt/c/Windows/System32/cmd.exe /c"  
+# OpenFOAM多版本
+# alias of7="source ~/OpenFOAM/OpenFOAM7/OpenFOAM-7/etc/bashrc"
+# alias of8="source ~/OpenFOAM/OpenFOAM8/OpenFOAM-8/etc/bashrc"
+# alias of9="source ~/OpenFOAM/OpenFOAM9/OpenFOAM-9/etc/bashrc"
+# alias of10="source ~/OpenFOAM/OpenFOAM10/OpenFOAM-10/etc/bashrc"
+# alias of11="source ~/OpenFOAM/OpenFOAM11/OpenFOAM-11/etc/bashrc"
+# alias of12="source ~/OpenFOAM/OpenFOAM12/OpenFOAM-12/etc/bashrc"
 
 ######################
 # 网络通信
@@ -125,15 +124,11 @@ parafoam() {
     cmd /c "paraview $foamfile"
 }
 source ~/opt/clean/bashrc.sh    # 痕迹清理
-() {
-    emulate -L zsh
-    bindkey -r "^B"
-}
 
-# rust 配置
+# rust
 source ~/.cargo/env
 
-# deno配置
+# deno
 source "/home/sunny/.deno/env"
 
 # bun
