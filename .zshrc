@@ -78,7 +78,7 @@ setopt ignore_eof   # 禁用EOF行为
 export PATH="$HOME/nvim-linux-x86_64/bin:$PATH"
 export EDITOR=nvim
 # export TERMINAL=alacritty   # 设置默认的终端模拟器
-# export BROWSER=com.brave.Browser # 设置默认的浏览器
+# export BROWSER='/mnt/c/Users/sunny/app/firefox/firefox.exe' # 设置默认的浏览器
 
 ######################
 # 别名
@@ -103,7 +103,6 @@ export https_proxy=http://172.21.160.1:7890
 ######################
 # 应用配置
 ######################
-source ~/.cargo/env # cargo配置
 source ~/opt/gradle/bashrc.sh # gradle配置
 source ~/opt/comsol/bashrc.sh # comsol配置
 source ~/opt/verilog/bashrc.sh  # verilog配置
@@ -131,5 +130,14 @@ source ~/opt/clean/bashrc.sh    # 痕迹清理
     bindkey -r "^B"
 }
 
+# rust 配置
+source ~/.cargo/env
+
 # deno配置
-. "/home/sunny/.deno/env"
+source "/home/sunny/.deno/env"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+# bun completions
+[ -s "/home/sunny/.bun/_bun" ] && source "/home/sunny/.bun/_bun"
