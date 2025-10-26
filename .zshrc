@@ -38,32 +38,33 @@ zinit light zsh-users/zsh-autosuggestions
 
 # 模糊查找
 zinit light Aloxaf/fzf-tab
+# fzf配置
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_CTRL_T_COMMAND="fdfind \"\" /home/sunny/  /mnt/c/Users/sunny/Desktop/ /mnt/c/Users/sunny/AppData/Roaming/ /mnt/c/Users/sunny/.config/ -i -t f -t d -t l --hidden --follow"
 
 # Vi风格按键绑定
 zinit light jeffreytse/zsh-vi-mode
 function zvm_after_init() {
     # fzf-history-widget
-    bindkey "^R" fzf-history-widget
-    # 更改fzf-cd-widget
-    bindkey -r "^[c"
-    bindkey "^D" fzf-cd-widget
-    # fzf-file-widget
-    bindkey "^F" fzf-file-widget    
-
-    # ^C仅用于终止进程 
-    bindkey -r "^C"     
-    # 解绑^B backward-char
-    bindkey -r "^B"     
-    # 解绑^T forward-char
-    bindkey -r "^T"     
+    bindkey -M emacs "^R" fzf-history-widget
+    bindkey -M vicmd "^R" fzf-history-widget
+    bindkey -M viins "^R" fzf-history-widget
+    # 更改fzf-file-widget
+    bindkey -M emacs -r "^T"
+    bindkey -M vicmd -r "^T"
+    bindkey -M viins -r "^T"
+    bindkey -M emacs "^F" fzf-file-widget
+    bindkey -M vicmd "^F" fzf-file-widget
+    bindkey -M viins "^F" fzf-file-widget
+    # 禁用fzf-cd-widget
+    bindkey -M emacs -r "^[c"
+    bindkey -M vicmd -r "^[c"
+    bindkey -M viins -r "^[c"
     # 禁用fzf-tab-debug
-    bindkey -r "^X."
+    bindkey -M emacs -r "^X."
+    bindkey -M vicmd -r "^X."
+    bindkey -M viins -r "^X."
 }
-
-######################
-# fzf配置
-######################
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ######################
 # zsh选项
@@ -136,3 +137,10 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 # bun completions
 [ -s "/home/sunny/.bun/_bun" ] && source "/home/sunny/.bun/_bun"
+
+# fnm
+FNM_PATH="/home/sunny/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "`fnm env`"
+fi
