@@ -40,7 +40,7 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 # fzf配置
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_CTRL_T_COMMAND="fdfind \"\" /home/sunny/  /mnt/c/Users/sunny/Desktop/ /mnt/c/Users/sunny/AppData/Roaming/ /mnt/c/Users/sunny/.config/ -i -t f -t d -t l --hidden --follow"
+export FZF_CTRL_T_COMMAND="fdfind \"\" /home/sunny/ /mnt/c/Users/sunny/Desktop/ /mnt/c/Users/sunny/AppData/Roaming/ /mnt/c/Users/sunny/.config/ -I -i -t f -t d -t l --hidden"
 
 # Vi风格按键绑定
 zinit light jeffreytse/zsh-vi-mode
@@ -49,13 +49,10 @@ function zvm_after_init() {
     bindkey -M emacs "^R" fzf-history-widget
     bindkey -M vicmd "^R" fzf-history-widget
     bindkey -M viins "^R" fzf-history-widget
-    # 更改fzf-file-widget
-    bindkey -M emacs -r "^T"
-    bindkey -M vicmd -r "^T"
-    bindkey -M viins -r "^T"
-    bindkey -M emacs "^F" fzf-file-widget
-    bindkey -M vicmd "^F" fzf-file-widget
-    bindkey -M viins "^F" fzf-file-widget
+    # fzf-file-widget
+    bindkey -M emacs "^T" fzf-file-widget
+    bindkey -M vicmd "^T" fzf-file-widget
+    bindkey -M viins "^T" fzf-file-widget
     # 禁用fzf-cd-widget
     bindkey -M emacs -r "^[c"
     bindkey -M vicmd -r "^[c"
