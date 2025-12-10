@@ -40,7 +40,19 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 # fzf配置
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#将 Tab 绑定为补全（覆盖默认切换行为）
+# 1. 禁用默认 Tab 切换分组/候选的行为
+zstyle ':fzf-tab:*' switch-group ''
+# 2. 配置 fzf-tab 弹窗按键：Tab/Enter 均为确认补全
+zstyle ':fzf-tab:*' fzf-bindings \
+  'tab:accept' \          # Tab 键直接补全选中项
 export FZF_CTRL_T_COMMAND="fdfind \"\" /home/sunny/ /mnt/c/Users/sunny/Desktop/ /mnt/c/Users/sunny/AppData/Roaming/ /mnt/c/Users/sunny/.config/ -I -i -t f -t d -t l --hidden"
+# 关键：给 Ctrl+T 触发的 fzf 窗口也绑定 Tab 补全
+export FZF_CTRL_T_OPTS="--bind 'tab:accept,enter:accept' $FZF_CTRL_T_OPTS"
+# 大小写不敏感匹配
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+# 移除补全前缀限制，补全更顺滑
+zstyle ':fzf-tab:*' prefix ''
 
 # Vi风格按键绑定
 zinit light jeffreytse/zsh-vi-mode
