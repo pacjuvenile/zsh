@@ -73,7 +73,12 @@ setopt ignore_eof   # 禁用EOF行为
 ######################
 # 设置环境变量
 ######################
-export PATH="$HOME/nvim-linux-x86_64/bin:$PATH"
+export PATH=":$HOME/nvim-linux-x86_64/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/texlive/2025/bin/x86_64-linux:$PATH"
+
+export MANPATH="/home/sunny/texlive/2025/texmf-dist/doc/man:$MANPATH"
+export INFOPATH="/home/sunny/texlive/2025/texmf-dist/doc/info:$INFOPATH"
 
 ######################
 # 别名
