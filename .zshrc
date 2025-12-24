@@ -17,7 +17,7 @@ ZINIT_HOME=$HOME/.local/share/zinit/zinit.git
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 # 激活zinit
-source "${ZINIT_HOME}/zinit.zsh"
+[[ -s "$ZINIT_HOME"/zinit.zsh ]] && source "$ZINIT_HOME/zinit.zsh"
 # 初始化补全系统
 autoload -Uz compinit && compinit
 # 注册 Zinit 补全
@@ -39,7 +39,11 @@ zinit light zsh-users/zsh-autosuggestions
 # 模糊查找
 zinit light Aloxaf/fzf-tab
 # fzf配置
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+FZF_PATH="$HOME/.fzf/bin"
+if [[ -d "$FZF_PATH" ]]; then
+    [[ ! ":$PATH:" == *:"$FZF_PATH":* ]] && export PATH="${PATH:+${PATH}:}$FZF_PATH"
+    source <(fzf --zsh)
+fi
 #将 Tab 绑定为补全（覆盖默认切换行为）
 # 1. 禁用默认 Tab 切换分组/候选的行为
 zstyle ':fzf-tab:*' switch-group ''
@@ -76,37 +80,42 @@ function zvm_after_init() {
 }
 
 ######################
-# zsh选项
+# 选项
 ######################
 setopt autocd       # 输入目录名自动跳转
 setopt promptsubst  # 在提示符中启用命令替换
 setopt ignore_eof   # 禁用EOF行为
 
 ######################
-# 设置环境变量
+# 环境变量
 ######################
-export PATH=":$HOME/nvim-linux-x86_64/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/texlive/2025/bin/x86_64-linux:$PATH"
+export LOCAL_PATH="$HOME/.local/bin"
+if [[ -d "$LOCAL_PATH" ]]; then
+    [[ ! ":$PATH:" == *:"$LOCAL_PATH":* ]] && export PATH="${PATH:+${PATH}:}$LOCAL_PATH"
+fi
 
-export MANPATH="/home/sunny/texlive/2025/texmf-dist/doc/man:$MANPATH"
-export INFOPATH="/home/sunny/texlive/2025/texmf-dist/doc/info:$INFOPATH"
+export HOME_APP="$HOME/app"
+export NVIM_PATH="$HOME_APP/nvim-linux-x86_64/bin"
+if [[ -d "$NVIM_PATH" ]]; then
+    [[ ! ":$PATH:" == *:"$NVIM_PATH":* ]] && export PATH="${PATH:+${PATH}:}$NVIM_PATH"
+fi
+export TEX_PATH="$HOME_APP/texlive/2025/bin/x86_64-linux"
+export TEX_MAN_PATH="$HOME_APP/texlive/2025/texmf-dist/doc/man"
+export TEX_INFO_PATH="$HOME_APP/texlive/2025/texmf-dist/doc/info"
+if [[ -d "$TEX_PATH" ]]; then
+    [[ ! ":$PATH:" == *:"$TEX_PATH":* ]] && export PATH="${PATH:+${PATH}:}$TEX_PATH"
+    [[ ! ":$MANPATH:" == *:"$TEX_MAN_PATH":* ]] && export MANPATH="${MANPATH:+${MANPATH}:}$TEX_MAN_PATH"
+    [[ ! ":$INFOPATH:" == *:"$TEX_INFO_PATH":* ]] && export INFOPATH="${INFOPATH:+${INFOPATH}:}$TEX_INFO_PATH"
+fi
 
 ######################
 # 别名
 ######################
-alias nv="$HOME/nvim-linux-x86_64/bin/nvim"
+alias nv="$HOME_APP/nvim-linux-x86_64/bin/nvim"
 alias ya="yazi"
 alias py="python3"    
 # windows的cmd
 alias cmd="/mnt/c/Windows/System32/cmd.exe /c"  
-# OpenFOAM多版本
-# alias of7="source ~/OpenFOAM/OpenFOAM7/OpenFOAM-7/etc/bashrc"
-# alias of8="source ~/OpenFOAM/OpenFOAM8/OpenFOAM-8/etc/bashrc"
-# alias of9="source ~/OpenFOAM/OpenFOAM9/OpenFOAM-9/etc/bashrc"
-# alias of10="source ~/OpenFOAM/OpenFOAM10/OpenFOAM-10/etc/bashrc"
-# alias of11="source ~/OpenFOAM/OpenFOAM11/OpenFOAM-11/etc/bashrc"
-# alias of12="source ~/OpenFOAM/OpenFOAM12/OpenFOAM-12/etc/bashrc"
 
 ######################
 # 网络通信
@@ -114,47 +123,42 @@ alias cmd="/mnt/c/Windows/System32/cmd.exe /c"
 export http_proxy=http://172.21.160.1:7890
 export https_proxy=http://172.21.160.1:7890
 
-######################
-# 应用配置
-######################
-source ~/opt/gradle/bashrc.sh # gradle配置
-source ~/opt/comsol/bashrc.sh # comsol配置
-source ~/opt/verilog/bashrc.sh  # verilog配置
-source ~/opt/python/bashrc.sh    # python配置
-word() {
-    cmd  "WINWORD $(wslpath -w "$@")"   # word配置
+###########################
+# 清除痕迹
+###########################
+clean-tracks() {
+    rm -rf /mnt/c/Users/sunny/AppData/Roaming/Microsoft/Windows/Recent/*
+    rm -rf /mnt/c/Users/sunny/AppData/Roaming/Microsoft/Office/Recent/*
+    rm -rf /mnt/c/Users/sunny/AppData/Roaming/kingsoft/office6/backup/*
+    rm -rf /mnt/c/Users/sunny/AppData/Roaming/Adobe/Common/"Media Cache"/*
+    rm -rf /mnt/c/Users/sunny/AppData/Roaming/Adobe/Common/"Media Cache Files"/*
+    rm -rf /mnt/c/Users/sunny/AppData/Roaming/Adobe/Common/"Peak Files"/*
+    rm -rf /mnt/c/Users/sunny/AppData/Local/gif123/*.gif
+    rm -rf /mnt/c/Users/sunny/Documents/"Tencent Files"/3648579049
+    rm -rf /mnt/c/Users/sunny/Documents/"WeChat Files"/wxid_fp83u8nabg7i22/FileStorage/*
+    rm -rf /mnt/c/Users/sunny/Pictures/QQplayerPic/*
 }
-excel() {
-    cmd "EXCEL $(wslpath -w "$@")"  # excel配置
-}
-ppt() {
-    cmd "POWERPNT $(wslpath -w "$@")"   # ppt配置
-}
-# parafoam配置
-parafoam() {
-    local foamfile="$(basename $(pwd)).foam"
-    if [ ! -f "$foamfile" ];then
-        touch "$foamfile"
-    fi
-    cmd /c "paraview $foamfile"
-}
-source ~/opt/clean/bashrc.sh    # 痕迹清理
 
+###########################
+# 软件配置
+###########################
 # rust
-source ~/.cargo/env
+[[ -s "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
 
 # deno
-source "/home/sunny/.deno/env"
+[[ -s "$HOME/.deno/env" ]] && source "$HOME/.deno/env"
 
 # bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-# bun completions
-[ -s "/home/sunny/.bun/_bun" ] && source "/home/sunny/.bun/_bun"
+export BUN_PATH="$HOME/.bun"
+if [[ -d "$BUN_PATH" ]]; then
+    [[ ! ":$PATH:" == *:"$BUN_PATH":* ]] && export PATH="${PATH:+${PATH}:}${BUN_PATH}/bin"
+    # bun completions
+    [[ -s "$BUN_PATH/_bun" ]] && source "$BUN_PATH/_bun"
+fi
 
 # fnm
-FNM_PATH="/home/sunny/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "`fnm env`"
+export FNM_PATH="$HOME/.local/share/fnm"
+if [[ -d "$FNM_PATH" ]]; then
+    [[ ! ":$PATH:" == *:"$FNM_PATH":* ]] && export PATH="${PATH:+${PATH}:}$FNM_PATH"
+    source <(fnm env)
 fi
