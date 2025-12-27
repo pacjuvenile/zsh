@@ -39,7 +39,7 @@ zinit light zsh-users/zsh-autosuggestions
 # 模糊查找
 zinit light Aloxaf/fzf-tab
 # fzf配置
-FZF_PATH="$HOME/.fzf/bin"
+FZF_PATH=$(dirname "$(which fzf)")
 if [[ -d "$FZF_PATH" ]]; then
     [[ ! ":$PATH:" == *:"$FZF_PATH":* ]] && export PATH="${PATH:+${PATH}:}$FZF_PATH"
     source <(fzf --zsh)
@@ -50,7 +50,7 @@ zstyle ':fzf-tab:*' switch-group ''
 # 2. 配置 fzf-tab 弹窗按键：Tab/Enter 均为确认补全
 zstyle ':fzf-tab:*' fzf-bindings \
   'tab:accept' \          # Tab 键直接补全选中项
-export FZF_CTRL_T_COMMAND="fdfind \"\" /home/sunny/ /mnt/c/Users/sunny/Desktop/ /mnt/c/Users/sunny/AppData/Roaming/ /mnt/c/Users/sunny/.config/ -I -i -t f -t d -t l --hidden"
+export FZF_CTRL_T_COMMAND="fd \"\" /home/pacjuvenile/ /mnt/c/Users/sunny/Desktop/ /mnt/c/Users/sunny/AppData/Roaming/ /mnt/c/Users/sunny/.config/ -I -i -t f -t d -t l --hidden"
 # 关键：给 Ctrl+T 触发的 fzf 窗口也绑定 Tab 补全
 export FZF_CTRL_T_OPTS="--bind 'tab:accept,enter:accept' $FZF_CTRL_T_OPTS"
 # 大小写不敏感匹配
@@ -89,29 +89,24 @@ setopt ignore_eof   # 禁用EOF行为
 ######################
 # 环境变量
 ######################
-export LOCAL_PATH="$HOME/.local/bin"
-if [[ -d "$LOCAL_PATH" ]]; then
-    [[ ! ":$PATH:" == *:"$LOCAL_PATH":* ]] && export PATH="${PATH:+${PATH}:}$LOCAL_PATH"
-fi
+# export LOCAL_PATH="$HOME/.local/bin"
+# if [[ -d "$LOCAL_PATH" ]]; then
+#     [[ ! ":$PATH:" == *:"$LOCAL_PATH":* ]] && export PATH="${PATH:+${PATH}:}$LOCAL_PATH"
+# fi
 
-export HOME_APP="$HOME/app"
-export NVIM_PATH="$HOME_APP/nvim-linux-x86_64/bin"
-if [[ -d "$NVIM_PATH" ]]; then
-    [[ ! ":$PATH:" == *:"$NVIM_PATH":* ]] && export PATH="${PATH:+${PATH}:}$NVIM_PATH"
-fi
-export TEX_PATH="$HOME_APP/texlive/2025/bin/x86_64-linux"
-export TEX_MAN_PATH="$HOME_APP/texlive/2025/texmf-dist/doc/man"
-export TEX_INFO_PATH="$HOME_APP/texlive/2025/texmf-dist/doc/info"
-if [[ -d "$TEX_PATH" ]]; then
-    [[ ! ":$PATH:" == *:"$TEX_PATH":* ]] && export PATH="${PATH:+${PATH}:}$TEX_PATH"
-    [[ ! ":$MANPATH:" == *:"$TEX_MAN_PATH":* ]] && export MANPATH="${MANPATH:+${MANPATH}:}$TEX_MAN_PATH"
-    [[ ! ":$INFOPATH:" == *:"$TEX_INFO_PATH":* ]] && export INFOPATH="${INFOPATH:+${INFOPATH}:}$TEX_INFO_PATH"
-fi
+# export TEX_PATH="$HOME_APP/texlive/2025/bin/x86_64-linux"
+# export TEX_MAN_PATH="$HOME_APP/texlive/2025/texmf-dist/doc/man"
+# export TEX_INFO_PATH="$HOME_APP/texlive/2025/texmf-dist/doc/info"
+# if [[ -d "$TEX_PATH" ]]; then
+#     [[ ! ":$PATH:" == *:"$TEX_PATH":* ]] && export PATH="${PATH:+${PATH}:}$TEX_PATH"
+#     [[ ! ":$MANPATH:" == *:"$TEX_MAN_PATH":* ]] && export MANPATH="${MANPATH:+${MANPATH}:}$TEX_MAN_PATH"
+#     [[ ! ":$INFOPATH:" == *:"$TEX_INFO_PATH":* ]] && export INFOPATH="${INFOPATH:+${INFOPATH}:}$TEX_INFO_PATH"
+# fi
 
 ######################
 # 别名
 ######################
-alias nv="$HOME_APP/nvim-linux-x86_64/bin/nvim"
+alias nv="nvim"
 alias ya="yazi"
 alias py="python3"    
 # windows的cmd
