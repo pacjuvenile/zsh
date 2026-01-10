@@ -31,14 +31,17 @@ autoload -Uz _zinit
 zinit ice depth"1"  # git clone depth
 zinit light romkatv/powerlevel10k
 
-# 高亮、补全和提示
+# 高亮
 zinit light zsh-users/zsh-syntax-highlighting 
+
+# 补全
 zinit light zsh-users/zsh-completions
+
+# 提示
 zinit light zsh-users/zsh-autosuggestions
 
 # 模糊查找
 zinit light Aloxaf/fzf-tab
-# fzf配置
 FZF_PATH=$(dirname "$(which fzf)")
 if [[ -d "$FZF_PATH" ]]; then
     [[ ! ":$PATH:" == *:"$FZF_PATH":* ]] && export PATH="${PATH:+${PATH}:}$FZF_PATH"
@@ -87,30 +90,11 @@ setopt promptsubst  # 在提示符中启用命令替换
 setopt ignore_eof   # 禁用EOF行为
 
 ######################
-# 环境变量
-######################
-# export LOCAL_PATH="$HOME/.local/bin"
-# if [[ -d "$LOCAL_PATH" ]]; then
-#     [[ ! ":$PATH:" == *:"$LOCAL_PATH":* ]] && export PATH="${PATH:+${PATH}:}$LOCAL_PATH"
-# fi
-
-# export TEX_PATH="$HOME_APP/texlive/2025/bin/x86_64-linux"
-# export TEX_MAN_PATH="$HOME_APP/texlive/2025/texmf-dist/doc/man"
-# export TEX_INFO_PATH="$HOME_APP/texlive/2025/texmf-dist/doc/info"
-# if [[ -d "$TEX_PATH" ]]; then
-#     [[ ! ":$PATH:" == *:"$TEX_PATH":* ]] && export PATH="${PATH:+${PATH}:}$TEX_PATH"
-#     [[ ! ":$MANPATH:" == *:"$TEX_MAN_PATH":* ]] && export MANPATH="${MANPATH:+${MANPATH}:}$TEX_MAN_PATH"
-#     [[ ! ":$INFOPATH:" == *:"$TEX_INFO_PATH":* ]] && export INFOPATH="${INFOPATH:+${INFOPATH}:}$TEX_INFO_PATH"
-# fi
-
-######################
 # 别名
 ######################
-alias nv="nvim"
-alias ya="yazi"
-alias py="python3"    
-# windows的cmd
 alias cmd="/mnt/c/Windows/System32/cmd.exe /c"  
+alias nv="nvim"
+alias py="python3"    
 
 ######################
 # 网络通信
@@ -121,7 +105,7 @@ export https_proxy=http://172.21.160.1:7890
 ###########################
 # 清除痕迹
 ###########################
-clean-tracks() {
+function clean-tracks() {
     rm -rf /mnt/c/Users/sunny/AppData/Roaming/Microsoft/Windows/Recent/*
     rm -rf /mnt/c/Users/sunny/AppData/Roaming/Microsoft/Office/Recent/*
     rm -rf /mnt/c/Users/sunny/AppData/Roaming/kingsoft/office6/backup/*
@@ -139,6 +123,15 @@ clean-tracks() {
 ###########################
 # rust
 [[ -s "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
+
+# yazi
+function ya() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXX")" cwd
+  command yazi "$@" --cwd-file="$tmp"
+  IFS= read -r -d '' cwd < "$tmp"
+  [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+  rm -f -- "$tmp"
+}
 
 # deno
 [[ -s "$HOME/.deno/env" ]] && source "$HOME/.deno/env"
