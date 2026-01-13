@@ -1,6 +1,9 @@
 # 主机名
 HOST=nixos
 
+# 默认编辑器
+export EDITOR=nvim
+
 # 网络协议
 export http_proxy=http://172.21.160.1:7890
 export https_proxy=http://172.21.160.1:7890
@@ -9,12 +12,14 @@ export https_proxy=http://172.21.160.1:7890
 setopt autocd
 
 # ls优化
+alias l="command ls --color=tty -lh"
+alias ll="command ls --color=tty -lha"
 alias ls="command ls --color=tty"
 
 # 常用程序
 alias cmd="/mnt/c/Windows/System32/cmd.exe /c"  
-alias nv="nvim"
-alias py="python3"    
+alias nv=nvim
+alias py=python3    
 
 # 历史命令
 HISTSIZE=5000
