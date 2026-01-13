@@ -11,4 +11,3 @@ source "${ZSH_CONFIG_HOME}/functions.zsh"
 # 环境设置
 source "${ZSH_CONFIG_HOME}/envs.zsh"
 
-zle -N zle-keymap-select

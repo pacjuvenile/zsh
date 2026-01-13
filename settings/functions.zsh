@@ -21,11 +21,3 @@ function clean-tracks() {
     rm -rf /mnt/c/Users/sunny/Pictures/QQplayerPic/*
 }
 
-# 光标形状
-function zle-keymap-select {
-    if [[ $KEYMAP == vicmd ]] || [[ $1 = 'block' ]]; then
-        echo -ne '\e[2 q'
-    elif [[ $KEYMAP == main ]] || [[ $KEYMAP == viins ]] || [[ $KEYMAP = '' ]] || [[ $1 = 'beam' ]]; then
-        echo -ne '\e[6 q'
-    fi
-}
