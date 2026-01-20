@@ -5,7 +5,7 @@ if [[ -d "$FZF_PATH" ]]; then
     source <(fzf --zsh)
 fi
 # 更改映射
-function zvm_after_lazy_keybindings() {
+function zvm_after_init() {
   bindkey -r '^T'
   bindkey '\et' fzf-file-widget
   bindkey -r '^R'
