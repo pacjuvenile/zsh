@@ -1,6 +1,4 @@
 ZSH_CONFIG_HOME="${HOME}/dotfiles/zsh/settings"
-# 使用vim风格的zle
-bindkey -v
 
 # 插件配置
 source "${ZSH_CONFIG_HOME}/plugin_manager.zsh"

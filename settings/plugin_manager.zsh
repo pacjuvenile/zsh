@@ -6,7 +6,11 @@ if [[ ! -d "$ZINIT_HOME" ]]; then
 fi
 [[ -s "${ZINIT_HOME}/zinit.zsh" ]] && source "${ZINIT_HOME}/zinit.zsh"
 
-# 插件配置文件
+# 基础插件
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
+
+# 扩展插件
 PLUGIN_CONFIG_HOME="${HOME}/dotfiles/zsh/plugins"
 for plugin_config_file in "${PLUGIN_CONFIG_HOME}"/**/*.zsh; do
   [[ -s "$plugin_config_file" ]] && source "$plugin_config_file"
