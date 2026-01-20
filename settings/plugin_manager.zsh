@@ -21,4 +21,6 @@ function zvm_after_init() {
     fi
     [[ -s "$plugin_config_file" ]] && source "$plugin_config_file"
   done
+  # 键位设置
+  source "${ZSH_CONFIG_HOME}/keymaps.zsh"
 }
