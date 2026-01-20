@@ -20,4 +20,3 @@ function clean-tracks() {
     rm -rf /mnt/c/Users/sunny/Documents/"WeChat Files"/wxid_fp83u8nabg7i22/FileStorage/*
     rm -rf /mnt/c/Users/sunny/Pictures/QQplayerPic/*
 }
-
