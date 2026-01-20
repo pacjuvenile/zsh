@@ -9,8 +9,7 @@ fi
 # 基础插件
 ZVM_INIT_MODE=sourcing
 ZVM_LAZY_KEYBINDINGS=false
-zinit ice depth=1
-zinit light jeffreytse/zsh-vi-mode
+zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
 
 # 扩展插件
 PLUGIN_CONFIG_HOME="${HOME}/dotfiles/zsh/plugins"
