@@ -6,7 +6,7 @@ if [[ -d "$FZF_PATH" ]]; then
 fi
 # 更改映射
 bindkey -r '^T'
-bindkey '\ef' fzf-file-widget
+bindkey '\et' fzf-file-widget
 bindkey -r '^R'
 bindkey '\er' fzf-history-widget
 # 启用插件
