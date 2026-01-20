@@ -12,6 +12,13 @@ zinit light jeffreytse/zsh-vi-mode
 
 # 扩展插件
 PLUGIN_CONFIG_HOME="${HOME}/dotfiles/zsh/plugins"
-for plugin_config_file in "${PLUGIN_CONFIG_HOME}"/**/*.zsh; do
-  [[ -s "$plugin_config_file" ]] && source "$plugin_config_file"
-done
+[[ -s "${PLUGIN_CONFIG_HOME}/powerlevel10k.zsh" ]] && source "${PLUGIN_CONFIG_HOME}/powerlevel10k.zsh"
+
+function zvm_after_init() {
+  for plugin_config_file in "${PLUGIN_CONFIG_HOME}"/**/*.zsh; do
+    if [[ $plugin_config_file == "${PLUGIN_CONFIG_HOME}/powerlevel10k.zsh" ]]; then
+      continue;
+    fi
+    [[ -s "$plugin_config_file" ]] && source "$plugin_config_file"
+  done
+}
