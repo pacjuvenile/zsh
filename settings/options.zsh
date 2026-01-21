@@ -19,7 +19,6 @@ alias ls="command ls --color=tty"
 # 常用程序
 alias cmd="/mnt/c/Windows/System32/cmd.exe /c"  
 alias nv=nvim
-alias py=python3    
 
 # 历史命令
 HISTSIZE=5000
