@@ -6,13 +6,11 @@ if [[ ! -d "$ZINIT_HOME" ]]; then
 fi
 [[ -s "${ZINIT_HOME}/zinit.zsh" ]] && source "${ZINIT_HOME}/zinit.zsh"
 
-# 基础插件
-ZVM_INIT_MODE=sourcing
-ZVM_LAZY_KEYBINDINGS=false
-zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
-
-# 扩展插件
+# 加载插件
 PLUGIN_CONFIG_HOME="${HOME}/dotfiles/zsh/plugins"
-for plugin_config_file in "${PLUGIN_CONFIG_HOME}"/**/*.zsh; do
-  [[ -s "$plugin_config_file" ]] && source "$plugin_config_file"
+[[ -s "$PLUGIN_CONFIG_HOME"/zsh-vi-mode.zsh ]] && source "$PLUGIN_CONFIG_HOME"/zsh-vi-mode.zsh
+for plugin_config_file in "${PLUGIN_CONFIG_HOME}"/**/*.zsh(N.); do
+  if [[ "$plugin_config_file" != "$PLUGIN_CONFIG_HOME"/zsh-vi-mode.zsh ]]; then
+    [[ -s "$plugin_config_file" ]] && source "$plugin_config_file"
+  fi
 done

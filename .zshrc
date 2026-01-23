@@ -1,7 +1,7 @@
 ZSH_CONFIG_HOME="${HOME}/dotfiles/zsh/settings"
 
 # 插件配置
-source "${ZSH_CONFIG_HOME}/plugin_manager.zsh"
+source "${ZSH_CONFIG_HOME}/zinit.zsh"
 # 环境设置
 source "${ZSH_CONFIG_HOME}/envs.zsh"
 # 选项配置
