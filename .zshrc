@@ -1,12 +1,12 @@
-ZSH_CONFIG_HOME="${HOME}/dotfiles/zsh/settings"
+ZSH_CONFIG_HOME="${HOME}/dotfiles/zshell/zsh"
 
 # 插件配置
 source "${ZSH_CONFIG_HOME}/zinit.zsh"
 # 环境设置
-source "${ZSH_CONFIG_HOME}/envs.zsh"
+source "${ZSH_CONFIG_HOME}/settings/envs.zsh"
 # 选项配置
-source "${ZSH_CONFIG_HOME}/options.zsh"
+source "${ZSH_CONFIG_HOME}/settings/options.zsh"
 # 键位设置
-source "${ZSH_CONFIG_HOME}/keymaps.zsh"
+source "${ZSH_CONFIG_HOME}/settings/keymaps.zsh"
 # 函数设置
-source "${ZSH_CONFIG_HOME}/functions.zsh"
+source "${ZSH_CONFIG_HOME}/settings/functions.zsh"
