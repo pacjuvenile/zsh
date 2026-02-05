@@ -7,6 +7,14 @@ function ya() {
   rm -f -- "$tmp"
 }
 
+# powershell调用
+function pwsh() {
+  powershell.exe -Command "Start-Process powershell.exe -Verb RunAs -ArgumentList '-Command', '$1' -WindowStyle Hidden"
+
+  # local command="$1"
+  # powershell.exe -Command "Start-Process powershell.exe -Verb RunAs -ArgumentList '-NoExit', '-Command', '$command'"
+}
+
 # 垃圾清理
 function clean-tracks() {
     rm -rf /mnt/c/Users/sunny/AppData/Roaming/Microsoft/Windows/Recent/*
