@@ -17,7 +17,6 @@ alias ll="command ls --color=tty -lha"
 alias ls="command ls --color=tty"
 
 # 常用程序
-alias cmd="/mnt/c/Windows/System32/cmd.exe /c"  
 alias nv=nvim
 
 # 历史命令
