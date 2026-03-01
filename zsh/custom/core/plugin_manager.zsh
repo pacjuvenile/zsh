@@ -7,10 +7,10 @@ fi
 [[ -s "${ZINIT_HOME}/zinit.zsh" ]] && source "${ZINIT_HOME}/zinit.zsh"
 
 # 加载插件
-PLUGIN_CONFIG="${ZSH_CONFIG}/custom/plugins"
-[[ -s "$PLUGIN_CONFIG"/zsh-vi-mode.zsh ]] && source "$PLUGIN_CONFIG"/zsh-vi-mode.zsh
-for plugin_config_file in "${PLUGIN_CONFIG}"/**/*.zsh(N.); do
-  if [[ "$plugin_config_file" != "$PLUGIN_CONFIG"/zsh-vi-mode.zsh ]]; then
+PLUGIN_CONFIG_PATH="${ZSH_CONFIG_PATH}/custom/plugins"
+[[ -s "$PLUGIN_CONFIG_PATH"/zsh-vi-mode.zsh ]] && source "$PLUGIN_CONFIG_PATH"/zsh-vi-mode.zsh
+for plugin_config_file in "${PLUGIN_CONFIG_PATH}"/**/*.zsh(N.); do
+  if [[ "$plugin_config_file" != "$PLUGIN_CONFIG_PATH"/zsh-vi-mode.zsh ]]; then
     [[ -s "$plugin_config_file" ]] && source "$plugin_config_file"
   fi
 done

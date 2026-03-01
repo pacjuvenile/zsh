@@ -1,6 +1,6 @@
 # 使用codex
 function code() {
-	${SH_CONFIG}/codex/run-codex-container.sh "$@"
+	${BASH_CONFIG_PATH}/codex/run-codex-container.bash "$@"
 }
 
 # yazi配置
