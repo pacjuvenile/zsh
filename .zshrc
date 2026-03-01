@@ -1,12 +1,13 @@
-ZSH_CONFIG_HOME="${HOME}/dotfiles/zshell"
+SH_CONFIG="${HOME}/dotfiles/zshell/sh"
+ZSH_CONFIG="${HOME}/dotfiles/zshell/zsh"
 
 # 选项配置
-source "${ZSH_CONFIG_HOME}/core/options.zsh"
+source "${ZSH_CONFIG}/custom/core/options.zsh"
 # 插件配置
-source "${ZSH_CONFIG_HOME}/core/plugin_manager.zsh"
+source "${ZSH_CONFIG}/custom/core/plugin_manager.zsh"
 # 环境设置
-source "${ZSH_CONFIG_HOME}/core/envs.zsh"
+source "${ZSH_CONFIG}/custom/core/envs.zsh"
 # 键位设置
-source "${ZSH_CONFIG_HOME}/core/keymaps.zsh"
+source "${ZSH_CONFIG}/custom/core/keymaps.zsh"
 # 函数设置
-source "${ZSH_CONFIG_HOME}/core/functions.zsh"
+source "${ZSH_CONFIG}/custom/core/functions.zsh"

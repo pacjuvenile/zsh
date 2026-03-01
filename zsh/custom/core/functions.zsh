@@ -1,6 +1,6 @@
 # 使用codex
 function code() {
-	/home/pacjuvenile/dotfiles/zshell/run-codex-container.sh "$@"
+	${SH_CONFIG}/codex/run-codex-container.sh "$@"
 }
 
 # yazi配置

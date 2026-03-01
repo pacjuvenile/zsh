@@ -10,7 +10,7 @@ fi
 PROJECT_DIR="$(pwd)"
 LOCAL_HOME_DIR="${PROJECT_DIR}/.codex-home"
 LOCAL_CODEX_DIR="${LOCAL_HOME_DIR}/.codex"
-IMAGE="${IMAGE:-codex-local:latest}"
+IMAGE="${IMAGE:-codex:latest}"
 
 mkdir -p "${LOCAL_CODEX_DIR}"
 
