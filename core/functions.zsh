@@ -1,3 +1,8 @@
+# 使用codex
+function code() {
+	/home/pacjuvenile/dotfiles/zshell/run-codex-container.sh "$@"
+}
+
 # yazi配置
 function ya() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXX")" cwd
@@ -10,9 +15,6 @@ function ya() {
 # powershell调用
 function pwsh() {
   powershell.exe -Command "Start-Process powershell.exe -Verb RunAs -ArgumentList '-Command', '$1' -WindowStyle Hidden"
-
-  # local command="$1"
-  # powershell.exe -Command "Start-Process powershell.exe -Verb RunAs -ArgumentList '-NoExit', '-Command', '$command'"
 }
 
 # 垃圾清理
