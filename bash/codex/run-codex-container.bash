@@ -8,7 +8,7 @@ if ! command -v podman >/dev/null 2>&1; then
 fi
 
 PROJECT_DIR="$(pwd)"
-LOCAL_HOME_DIR="${PROJECT_DIR}/.codex-home"
+LOCAL_HOME_DIR="${PROJECT_DIR}/home"
 LOCAL_CODEX_DIR="${LOCAL_HOME_DIR}/.codex"
 IMAGE="${IMAGE:-codex:latest}"
 
@@ -26,12 +26,13 @@ if ! podman image exists "${IMAGE}"; then
 fi
 
 exec podman run --rm -it \
+  --read-only \
+  -v "${PROJECT_DIR}:/workspace:rw" \
+  --tmpfs /tmp:rw,nosuid,nodev \
+  --tmpfs /run:rw,nosuid,nodev \
+	--tmpfs /nix:rw,nosuid,nodev \
   --userns=keep-id \
   --cap-drop=all \
   --security-opt=no-new-privileges \
-  -v "${PROJECT_DIR}:/workspace:rw" \
-  -e HOME=/workspace/.codex-home \
-  --read-only \
-  --tmpfs /tmp:rw,nosuid,nodev \
-  --tmpfs /run:rw,nosuid,nodev \
+  -e HOME=/workspace/home \
   "${IMAGE}"
