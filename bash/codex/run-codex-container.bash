@@ -26,13 +26,10 @@ if ! podman image exists "${IMAGE}"; then
 fi
 
 exec podman run --rm -it \
-  --read-only \
-  -v "${PROJECT_DIR}:/workspace:rw" \
-  --tmpfs /tmp:rw,nosuid,nodev \
-  --tmpfs /run:rw,nosuid,nodev \
-	--tmpfs /nix:rw,nosuid,nodev \
   --userns=keep-id \
   --cap-drop=all \
   --security-opt=no-new-privileges \
+  -v "${PROJECT_DIR}:/workspace:rw" \
   -e HOME=/workspace/home \
+	-e NIX_REMOTE=local \
   "${IMAGE}"
