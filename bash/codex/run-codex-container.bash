@@ -28,6 +28,7 @@ fi
 exec podman run --rm -it \
   --userns=keep-id \
   --cap-drop=all \
+	--cap-add=CAP_SYS_ADMIN \
   --security-opt=no-new-privileges \
   -v "${PROJECT_DIR}:/workspace:rw" \
   -e HOME=/workspace/home \
