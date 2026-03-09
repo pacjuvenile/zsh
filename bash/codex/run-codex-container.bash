@@ -29,6 +29,7 @@ exec podman run --rm -it \
   --userns=keep-id \
   --cap-drop=all \
 	--cap-add=SYS_ADMIN \
+	--cap-add=SYS_CHROOT \
   --security-opt=no-new-privileges \
   -v "${PROJECT_DIR}:/workspace:rw" \
   -e HOME=/workspace/home \
