@@ -18,6 +18,7 @@ alias ls="command ls --color=tty"
 
 # 常用程序
 alias nv=nvim
+alias zj=zellij
 
 # 历史命令
 HISTSIZE=5000
