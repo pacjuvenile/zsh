@@ -9,16 +9,12 @@ alias zj=zellij
 
 # explorer配置
 function e() {
-	local linux_path="${1:-$PWD}"
+	local linux_path="${1:-.}"
 	[[ -d "$linux_path" ]] || {
 		echo "Path not found: $linux_path" >&2
 		return 2
 	}
-	
-	local win_path
-	win_path="$(wslpath -w "$linux_path")" || return 3
-
-	cmd.exe /C start "" "$win_path" >/dev/null 2>&1 || return 4
+	explorer.exe $linux_path
 	return 0
 }
 
