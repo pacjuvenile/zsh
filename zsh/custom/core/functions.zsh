@@ -6,7 +6,21 @@ alias ls="command ls --color=tty"
 # 常用程序
 alias nv=nvim
 alias zj=zellij
-alias e='explorer .'
+
+# explorer配置
+function e() {
+	local linux_path="${1:-$PWD}"
+	[[ -d "$linux_path" ]] || {
+		echo "Path not found: $linux_path" >&2
+		return 2
+	}
+	
+	local win_path
+	win_path="$(wslpath -w "$linux_path")" || return 3
+
+	cmd.exe /C start "" "$win_path" >/dev/null 2>&1 || return 4
+	return 0
+}
 
 # yazi配置
 function ya() {
