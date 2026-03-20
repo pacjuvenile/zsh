@@ -6,7 +6,7 @@ IMAGE="${IMAGE:-opencode:latest}"
 
 mkdir -p "${LOCAL_OPENCODE_DIR}"
 
-if [[ -d "${HOME}/.config/opencode" && ! -e "${LOCAL_OPENCODE_DIR}/opencode.json" || ! -e "${LOCAL_OPENCODE_DIR}/opencode.jsonc" ]]; then
+if [[ -d "${HOME}/.config/opencode" && ! -e "${LOCAL_OPENCODE_DIR}/opencode.jsonc" ]]; then
   echo "Migrating existing ~/.config/opencode into ${LOCAL_OPENCODE_DIR} ..."
   cp -a "${HOME}/.config/opencode/." "${LOCAL_OPENCODE_DIR}/"
 fi
