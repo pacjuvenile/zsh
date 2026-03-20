@@ -22,9 +22,9 @@ function ya() {
   rm -f -- "$tmp"
 }
 
-# 使用codex
+# 使用opencode
 function code() {
-	${BASH_CONFIG_PATH}/codex/run-codex-container.bash "$@"
+	${BASH_CONFIG_PATH}/ai/opencode-run.bash "$@"
 }
 
 # powershell调用
