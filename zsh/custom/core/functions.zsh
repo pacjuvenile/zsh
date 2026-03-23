@@ -24,7 +24,8 @@ function ya() {
 
 # 使用opencode
 function code() {
-	${BASH_CONFIG_PATH}/ai/opencode-run.bash "$@"
+	# ${BASH_CONFIG_PATH}/ai/opencode-run.bash "$@"
+	${BASH_CONFIG_PATH}/ai/zeroclaw-run.bash "$@"
 }
 
 # powershell调用
