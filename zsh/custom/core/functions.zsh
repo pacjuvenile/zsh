@@ -31,6 +31,11 @@ function code() {
 function claw(){
 	${BASH_CONFIG_PATH}/ai/zeroclaw-run.bash "$@"
 }
+function claw-chat() {
+	local name="${1:-default}"
+	shift || true
+	podman exec -it "zeroclaw-${name}" zeroclaw agent "$@"
+}
 
 # powershell调用
 function pwsh() {

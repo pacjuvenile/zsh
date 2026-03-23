@@ -2,7 +2,7 @@
 PROJECT_DIR="$(pwd)"
 IMAGE="${IMAGE:-zeroclaw:latest}"
 
-NAME="zeroclaw-default"
+NAME="default"
 if [[ $# -gt 0 && "$1" != -* ]]; then
 	NAME="$1"
 	shift
@@ -22,7 +22,17 @@ if [[ -d "${HOME}/.zeroclaw" && -z "$(ls -A "$LOCAL_ZEROCLAW_DIR")" ]]; then
   cp -a "${HOME}/.zeroclaw/." "${LOCAL_ZEROCLAW_DIR}/"
 fi
 
-exec podman run -d \
+# exec podman run -d \
+# 	--name "zeroclaw-${NAME}" \
+#   --userns=keep-id \
+#   --cap-drop=all \
+# 	--cap-add=SYS_ADMIN \
+# 	--cap-add=SYS_CHROOT \
+#   --security-opt=no-new-privileges \
+#   -v "${PROJECT_DIR}:/workspace:rw" \
+#   -e HOME="/workspace/home/${NAME}" \
+#   "${IMAGE}" zeroclaw daemon "$@"
+exec podman run --rm -it \
 	--name "zeroclaw-${NAME}" \
   --userns=keep-id \
   --cap-drop=all \
@@ -31,4 +41,4 @@ exec podman run -d \
   --security-opt=no-new-privileges \
   -v "${PROJECT_DIR}:/workspace:rw" \
   -e HOME="/workspace/home/${NAME}" \
-  "${IMAGE}" zeroclaw agentd "$@"
+  "${IMAGE}" zeroclaw agent "$@"
