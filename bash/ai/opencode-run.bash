@@ -20,4 +20,4 @@ exec podman run --rm -it \
   -v "${PROJECT_DIR}:/workspace:rw" \
   -e HOME=/workspace/home \
 	-e OPENCODE_EXPERIMENTAL_OUTPUT_TOKEN_MAX=128000 \
-  "${IMAGE}"
+  "${IMAGE}" opencode
