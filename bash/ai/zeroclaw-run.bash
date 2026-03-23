@@ -22,17 +22,7 @@ if [[ -d "${HOME}/.zeroclaw" && -z "$(ls -A "$LOCAL_ZEROCLAW_DIR")" ]]; then
   cp -a "${HOME}/.zeroclaw/." "${LOCAL_ZEROCLAW_DIR}/"
 fi
 
-# exec podman run -d \
-# 	--name "zeroclaw-${NAME}" \
-#   --userns=keep-id \
-#   --cap-drop=all \
-# 	--cap-add=SYS_ADMIN \
-# 	--cap-add=SYS_CHROOT \
-#   --security-opt=no-new-privileges \
-#   -v "${PROJECT_DIR}:/workspace:rw" \
-#   -e HOME="/workspace/home/${NAME}" \
-#   "${IMAGE}" zeroclaw daemon "$@"
-exec podman run --rm -it \
+exec podman run -d \
 	--name "zeroclaw-${NAME}" \
   --userns=keep-id \
   --cap-drop=all \
@@ -41,4 +31,4 @@ exec podman run --rm -it \
   --security-opt=no-new-privileges \
   -v "${PROJECT_DIR}:/workspace:rw" \
   -e HOME="/workspace/home/${NAME}" \
-  "${IMAGE}" zeroclaw agent "$@"
+  "${IMAGE}" zeroclaw daemon "$@"
