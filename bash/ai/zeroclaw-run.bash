@@ -31,4 +31,6 @@ exec podman run -d \
   --security-opt=no-new-privileges \
   -v "${PROJECT_DIR}:/workspace:rw" \
   -e HOME="/workspace/home/${NAME}" \
-  "${IMAGE}" zeroclaw daemon "$@"
+	-p 127.0.0.1:42617:42617 \
+  "${IMAGE}" \
+	zeroclaw daemon --host 0.0.0.0 --port 42617 "$@"
