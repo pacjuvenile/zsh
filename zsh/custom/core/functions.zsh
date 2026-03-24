@@ -37,6 +37,11 @@ function claw-chat() {
 	podman exec -it "zeroclaw-${name}" zeroclaw agent "$@"
 }
 
+# 使用aichat
+function aichat() {
+	"${BASH_CONFIG_PATH}/ai/aichat-run.bash" "$@"
+}
+
 # powershell调用
 function pwsh() {
   powershell.exe -Command "Start-Process powershell.exe -Verb RunAs -ArgumentList '-Command', '$1' -WindowStyle Hidden"
