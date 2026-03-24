@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-PROJECT_DIR="$(pwd)"
+PROJECT_DIR="$(pwd -P)"
+PROJECT_KEY="$(printf '%s' "${PROJECT_DIR}" | sha256sum | cut -c1-12)"
+CONTAINER="aichat-${PROJECT_KEY}"
 IMAGE="${IMAGE:-aichat:latest}"
-CONTAINER="aichat"
 
 LOCAL_AICHAT_DIR="${PROJECT_DIR}/home/.config/aichat"
 mkdir -p "${LOCAL_AICHAT_DIR}"
@@ -23,8 +24,8 @@ if ! podman container exists "${CONTAINER}"; then
 		-e HOME="/workspace/home" \
 		"${IMAGE}" \
 		sleep infinity >/dev/null	
-elif [[ podman inspect -f '{{.State.Running}}' ${CONTAINER}  != "true" ]]; then
-	podman start "CONTAINER" >/dev/null
+elif [[ "$(podman inspect -f '{{.State.Running}}' "${CONTAINER}")"  != "true" ]]; then
+	podman start "$CONTAINER" >/dev/null
 fi
 
 if [[ -t 0 && -t 1 ]]; then
