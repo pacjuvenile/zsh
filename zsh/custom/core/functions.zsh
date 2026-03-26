@@ -22,12 +22,8 @@ function ya() {
   rm -f -- "$tmp"
 }
 
-# 使用opencode
-function code() {
-	${BASH_CONFIG_PATH}/ai/opencode-run.bash "$@"
-}
 # 使用codex
-function codex() {
+function code() {
 	"${BASH_CONFIG_PATH}/ai/codex-run.bash" "$@"
 }
 # 使用goose
