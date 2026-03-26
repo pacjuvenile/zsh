@@ -23,7 +23,7 @@ function ya() {
 }
 
 # 使用opencode
-function opencode() {
+function code() {
 	"${BASH_CONFIG_PATH}/ai/opencode-run.bash" "$@"
 }
 # 使用codex
