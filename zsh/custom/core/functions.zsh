@@ -22,13 +22,17 @@ function ya() {
   rm -f -- "$tmp"
 }
 
+# 使用opencode
+function opencode() {
+	"${BASH_CONFIG_PATH}/ai/opencode-run.bash" "$@"
+}
 # 使用codex
-function code() {
+function codex() {
 	"${BASH_CONFIG_PATH}/ai/codex-run.bash" "$@"
 }
 # 使用goose
 function goose() {
-	"{BASH_CONFIG_PATH}/ai/goose-run.bash"
+	"{BASH_CONFIG_PATH}/ai/goose-run.bash" "$@"
 }
 # 使用zeroclaw
 function claw(){
