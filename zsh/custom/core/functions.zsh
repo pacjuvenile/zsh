@@ -26,7 +26,6 @@ function ya() {
 function code() {
 	${BASH_CONFIG_PATH}/ai/opencode-run.bash "$@"
 }
-
 # 使用zeroclaw
 function claw(){
 	${BASH_CONFIG_PATH}/ai/zeroclaw-run.bash "$@"
@@ -36,10 +35,13 @@ function claw-chat() {
 	shift || true
 	podman exec -it "zeroclaw-${name}" zeroclaw agent "$@"
 }
-
 # 使用aichat
 function aichat() {
 	"${BASH_CONFIG_PATH}/ai/aichat-run.bash" "$@"
+}
+# 使用goose
+function goose() {
+	"{BASH_CONFIG_PATH}/ai/goose-run.bash"
 }
 
 # powershell调用
