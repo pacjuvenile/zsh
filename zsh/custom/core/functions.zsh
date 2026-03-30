@@ -26,13 +26,13 @@ function ya() {
 function code() {
 	"${BASH_CONFIG_PATH}/ai/opencode-run.bash" "$@"
 }
+# 使用crush
+function crush() {
+	"${BASH_CONFIG_PATH}/ai/crush-run.bash" "$@"
+}
 # 使用codex
 function codex() {
 	"${BASH_CONFIG_PATH}/ai/codex-run.bash" "$@"
-}
-# 使用goose
-function goose() {
-	"{BASH_CONFIG_PATH}/ai/goose-run.bash" "$@"
 }
 # 使用zeroclaw
 function claw(){
