@@ -4,7 +4,7 @@ LOCAL_CRUSH_DIR="${PROJECT_DIR}/home/.config/crush"
 IMAGE="${IMAGE:-crush:latest}"
 
 mkdir -p "${LOCAL_CRUSH_DIR}"
-if [[ -d "${HOME}/.config/crush" && ! -e "${LOCAL_CRUSH_DIR}/crush.jsonc" ]]; then
+if [[ -d "${HOME}/.config/crush" && ! -e "${LOCAL_CRUSH_DIR}/crush.json" ]]; then
 	echo "Migrating existing ~/.config/crush into ${LOCAL_CRUSH_DIR} ..."
 	cp -a "${HOME}/.config/crush/." "${LOCAL_CRUSH_DIR}/"
 fi
@@ -18,4 +18,4 @@ exec podman run --rm -it \
 	-v "${PROJECT_DIR}:/workspace:rw" \
 	-e HOME=/workspace/home \
 	"${IMAGE}" \
-	crush
+	crush --yolo
