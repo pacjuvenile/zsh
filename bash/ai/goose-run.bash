@@ -19,4 +19,4 @@ exec podman run --rm -it \
 	-e HOME=/workspace/home \
 	-e GOOSE_DISABLE_KEYRING=1 \
 	"${IMAGE}" \
-	goose
+	goose session
