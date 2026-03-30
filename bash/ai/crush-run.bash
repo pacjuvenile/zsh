@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 PROJECT_DIR="$(pwd)"
-LOCAL_OPENCODE_DIR="${PROJECT_DIR}/home/.config/crush"
+LOCAL_CRUSH_DIR="${PROJECT_DIR}/home/.config/crush"
 IMAGE="${IMAGE:-crush:latest}"
 
 mkdir -p "${LOCAL_CRUSH_DIR}"
