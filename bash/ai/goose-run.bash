@@ -18,5 +18,7 @@ exec podman run --rm -it \
 	-v "${PROJECT_DIR}:/workspace:rw" \
 	-e HOME=/workspace/home \
 	-e GOOSE_DISABLE_KEYRING=1 \
+	-e GOOSE_CONTEXT_LIMIT=262144 \
+	-e GOOSE_MAX_TOKENS=128000 \
 	"${IMAGE}" \
 	goose session
