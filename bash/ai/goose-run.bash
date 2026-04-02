@@ -19,6 +19,6 @@ exec podman run --rm -it \
 	-e HOME=/workspace/home \
 	-e GOOSE_DISABLE_KEYRING=1 \
 	-e GOOSE_CONTEXT_LIMIT=262144 \
-	-e GOOSE_MOIM_MESSAGE_FILE=$HOME/.config/goose/.goose-context.md \
+	-e GOOSE_MOIM_MESSAGE_FILE=/workspace/home/.config/goose/.goose-context.md \
 	"${IMAGE}" \
 	goose session
