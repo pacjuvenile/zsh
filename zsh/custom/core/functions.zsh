@@ -5,6 +5,7 @@ alias ls="command ls --color=tty"
 
 # 常用程序
 alias nv=nvim
+alias zellij=zj
 
 # explorer配置
 function e() {
