@@ -5,9 +5,6 @@ eval "$(direnv hook zsh)"
 # eval "$(starship init zsh)"
 # export STARSHIP_CONFIG="$HOME"/.config/starship/starship.toml
 
-# rust
-[[ -s "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
-
 # deno
 [[ -s "$HOME/.deno/env" ]] && source "$HOME/.deno/env"
 
