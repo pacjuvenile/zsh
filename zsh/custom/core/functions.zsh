@@ -24,11 +24,15 @@ function ya() {
 
 # 使用opencode
 function code() {
-	"${BASH_CONFIG_PATH}/ai/opencode-run.bash" "$@"
+	"${BASH_CONFIG_PATH}/ai/opencode-run.bash"
 }
 # 使用claude
 function claude() {
 	"${BASH_CONFIG_PATH}/ai/claude-run.bash"
+}
+# 使用crush
+function crush() {
+	"${BASH_CONFIG_PATH}/ai/crush-run.bash"
 }
 # 使用goose
 function goose() {
