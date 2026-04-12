@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 PROJECT_DIR="$(pwd -P)"
 LOCAL_CLAUDE_CONFIG_DIR="${PROJECT_DIR}/home/.claude"
-IMAGE="${IMAGE:-claude_1:latest}"
+IMAGE="${IMAGE:-claude:latest}"
 
 mkdir -p "${LOCAL_CLAUDE_CONFIG_DIR}"
 if [[ ! -e "${LOCAL_CLAUDE_CONFIG_DIR}/settings.json" ]]; then
