@@ -30,6 +30,14 @@ function code() {
 function claude() {
 	"${BASH_CONFIG_PATH}/ai/claude-run.bash"
 }
+# 使用pi
+function pi() {
+	"${BASH_CONFIG_PATH}/ai/pi-run.bash"
+}
+# 使用hermes
+function hermes() {
+	"${BASH_CONFIG_PATH}/ai/hermes-run.bash"
+}
 # 使用crush
 function crush() {
 	"${BASH_CONFIG_PATH}/ai/crush-run.bash"
