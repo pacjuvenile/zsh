@@ -26,6 +26,10 @@ function ya() {
 function code() {
 	"${BASH_CONFIG_PATH}/ai/opencode-run.bash"
 }
+# 使用codex
+function codex() {
+	"${BASH_CONFIG_PATH}/ai/codex-run.bash"
+}
 # 使用claude
 function claude() {
 	"${BASH_CONFIG_PATH}/ai/claude-run.bash"
