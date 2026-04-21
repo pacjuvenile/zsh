@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 PROJECT_DIR="$(pwd -P)"
 LOCAL_PI_CONFIG_DIR="${PROJECT_DIR}/home/.pi"
-IMAGE="${IMAGE:-pi_1:latest}"
+IMAGE="${IMAGE:-pi:latest}"
 
 mkdir -p "${LOCAL_PI_CONFIG_DIR}"
 if [[ ! -e "${LOCAL_PI_CONFIG_DIR}/agent/models.json" ]]; then
