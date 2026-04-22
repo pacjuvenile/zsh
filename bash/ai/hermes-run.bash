@@ -18,4 +18,4 @@ exec podman run --rm -it \
 	-v "${PROJECT_DIR}:/workspace:rw" \
 	-e HOME=/workspace/home \
 	"${IMAGE}" \
-	hermes
+	bash

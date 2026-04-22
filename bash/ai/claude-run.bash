@@ -5,8 +5,8 @@ IMAGE="${IMAGE:-claude:latest}"
 
 mkdir -p "${LOCAL_CLAUDE_CONFIG_DIR}"
 if [[ ! -e "${LOCAL_CLAUDE_CONFIG_DIR}/settings.json" ]]; then
-	echo "Migrating existing ~/.claude into ${LOCAL_CLAUDE_CONFIG_DIR} ..."
-	cp -a "${HOME}/.claude/." "${LOCAL_CLAUDE_CONFIG_DIR}/"
+	cp "${HOME}/.claude/settings.json" "${LOCAL_CLAUDE_CONFIG_DIR}/"
+	cp "${HOME}/.claude/.claude.json" "${PROJECT_DIR}/home/.claude.json"
 fi
 
 exec podman run --rm -it \
