@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 PROJECT_DIR="$(pwd)"
 LOCAL_CODEX_DIR="${PROJECT_DIR}/home/.codex"
-IMAGE="${IMAGE:-codex:latest}"
+IMAGE="${IMAGE:-codex:0.57.0}"
 
 mkdir -p "${LOCAL_CODEX_DIR}"
 if [[ -d "${HOME}/.codex" && ! -e "${LOCAL_CODEX_DIR}/config.toml" ]]; then
 	echo "Migrating existing ~/.codex into ${LOCAL_CODEX_DIR} ..."
-	cp "${HOME}/.codex/config.toml" "${LOCAL_CODEX_DIR}/"
+	cp "${HOME}/.codex/minimax.toml" "${LOCAL_CODEX_DIR}/config.toml"
 fi
 
 exec podman run --rm -it \

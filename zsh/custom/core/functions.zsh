@@ -30,6 +30,10 @@ function code() {
 function codex() {
 	"${BASH_CONFIG_PATH}/ai/codex-run.bash"
 }
+# 使用minimax
+function minimax() {
+	"${BASH_CONFIG_PATH}/ai/minimax-run.bash"
+}
 # 使用claude
 function claude() {
 	"${BASH_CONFIG_PATH}/ai/claude-run.bash"
