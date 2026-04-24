@@ -7,6 +7,7 @@ mkdir -p "${LOCAL_CLAUDE_CONFIG_DIR}"
 if [[ ! -e "${LOCAL_CLAUDE_CONFIG_DIR}/settings.json" ]]; then
 	cp "${HOME}/.claude/settings.json" "${LOCAL_CLAUDE_CONFIG_DIR}/"
 	cp "${HOME}/.claude/.claude.json" "${PROJECT_DIR}/home/.claude.json"
+	cp "${HOME}/.claude/CLAUDE.md" "${LOCAL_CLAUDE_CONFIG_DIR}/CLAUDE.md"
 fi
 
 exec podman run --rm -it \
