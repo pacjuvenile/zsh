@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 PROJECT_DIR="$(pwd -P)"
 LOCAL_CLAUDE_CONFIG_DIR="${PROJECT_DIR}/home/.claude"
-	IMAGE="${IMAGE:-claude:2.1.87}"
+IMAGE="${IMAGE:-claude:2.1.87}"
 
-mkdir -p "${LOCAL_CLAUDE_CONFIG_DIR}"
-if [[ ! -e "${LOCAL_CLAUDE_CONFIG_DIR}/settings.json" ]]; then
+if [[ ! -e "${LOCAL_CLAUDE_CONFIG_DIR}" ]]; then
+	mkdir -p "${LOCAL_CLAUDE_CONFIG_DIR}"
 	cp "${HOME}/.claude/settings.json" "${LOCAL_CLAUDE_CONFIG_DIR}/"
 	cp "${HOME}/.claude/.claude.json" "${PROJECT_DIR}/home/.claude.json"
 	cp "${HOME}/.claude/CLAUDE.md" "${LOCAL_CLAUDE_CONFIG_DIR}/CLAUDE.md"
