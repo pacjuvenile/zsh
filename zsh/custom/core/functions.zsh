@@ -34,6 +34,9 @@ function codex() {
 function claude() {
 	"${BASH_CONFIG_PATH}/ai/claude-run.bash"
 }
+function claude-withproxy() {
+	"${BASH_CONFIG_PATH}/ai/claude-withproxy.bash"
+}
 # 使用pi
 function pi() {
 	"${BASH_CONFIG_PATH}/ai/pi-run.bash"

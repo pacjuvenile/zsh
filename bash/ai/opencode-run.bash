@@ -17,5 +17,6 @@ exec podman run --rm -it \
 	--security-opt=no-new-privileges \
 	-v "${PROJECT_DIR}:/workspace:rw" \
 	-e HOME=/workspace/home \
+	-e OPENCODE_ENABLE_EXA=1 \
 	"${IMAGE}" \
 	opencode
