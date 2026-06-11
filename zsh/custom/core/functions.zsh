@@ -45,10 +45,10 @@ function claude() {
 # function hermes() {
 # 	"${BASH_CONFIG_PATH}/ai/hermes-run.bash"
 # }
-# # 使用crush
-# function crush() {
-# 	"${BASH_CONFIG_PATH}/ai/crush-run.bash"
-# }
+# 使用crush
+function crush() {
+	"${BASH_CONFIG_PATH}/ai/crush-run.bash"
+}
 # # 使用goose
 # function goose() {
 # 	"${BASH_CONFIG_PATH}/ai/goose-run.bash"

@@ -7,8 +7,9 @@ if [[ ! -e "${LOCAL_CLAUDE_CONFIG_DIR}" ]]; then
 	mkdir -p "${LOCAL_CLAUDE_CONFIG_DIR}"
 	cp "${HOME}/.claude/settings.json" "${LOCAL_CLAUDE_CONFIG_DIR}/"
 	cp "${HOME}/.claude/statusline.sh" "${LOCAL_CLAUDE_CONFIG_DIR}/"
-	cp "${HOME}/.claude/.claude.json" "${PROJECT_DIR}/home/.claude.json"
-	cp "${HOME}/.claude/CLAUDE.md" "${LOCAL_CLAUDE_CONFIG_DIR}/CLAUDE.md"
+	cp "${HOME}/.claude/CLAUDE.md" "${LOCAL_CLAUDE_CONFIG_DIR}/"
+	cp "${HOME}/.claude/github_token.txt" "${LOCAL_CLAUDE_CONFIG_DIR}/"
+	cp "${HOME}/.claude/.claude.json" "${PROJECT_DIR}/home/"
 fi
 
 exec podman run --rm -it \
