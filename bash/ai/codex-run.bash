@@ -3,10 +3,10 @@ PROJECT_DIR="$(pwd)"
 LOCAL_CODEX_DIR="${PROJECT_DIR}/home/.codex"
 IMAGE="${IMAGE:-codex:latest}"
 
-mkdir -p "${LOCAL_CODEX_DIR}"
-if [[ -d "${HOME}/.codex" && ! -e "${LOCAL_CODEX_DIR}/config.toml" ]]; then
-	cp "${home}/.codex/config.toml" "${local_codex_dir}/"
-	cp "${home}/.codex/github_token.txt" "${local_codex_dir}/"
+if [[ ! -e "{LOCAL_CODEX_DIR}" ]]; then
+	mkdir -p "${LOCAL_CODEX_DIR}"
+	cp "${HOME}/.codex/config.toml" "${LOCAL_CODEX_DIR}/"
+	cp "${HOME}/.codex/github_token.txt" "${LOCAL_CODEX_DIR}/"
 fi
 
 exec podman run --rm -it \
