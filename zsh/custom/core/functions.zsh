@@ -23,7 +23,7 @@ function ya() {
 }
 
 # 使用opencode
-function code() {
+unction code() {
 	"${BASH_CONFIG_PATH}/ai/opencode-run.bash"
 }
 # 使用codex
@@ -37,14 +37,10 @@ function claude() {
 # function claude-withproxy() {
 # 	"${BASH_CONFIG_PATH}/ai/claude-withproxy.bash"
 # }
-# # 使用pi
-# function pi() {
-# 	"${BASH_CONFIG_PATH}/ai/pi-run.bash"
-# }
-# # 使用hermes
-# function hermes() {
-# 	"${BASH_CONFIG_PATH}/ai/hermes-run.bash"
-# }
+# 使用pi
+function pi() {
+	"${BASH_CONFIG_PATH}/ai/pi-run.bash"
+}
 # 使用crush
 function crush() {
 	"${BASH_CONFIG_PATH}/ai/crush-run.bash"
