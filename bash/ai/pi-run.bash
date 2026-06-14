@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 PROJECT_DIR="$(pwd -P)"
-LOCAL_PI_CONFIG_DIR="${PROJECT_DIR}/home/.pi"
+LOCAL_PI_AGENT_CONFIG_DIR="${PROJECT_DIR}/home/.pi/agent"
 IMAGE="${IMAGE:-pi:latest}"
 
-mkdir -p "${LOCAL_PI_CONFIG_DIR}"
-if [[ ! -e "${LOCAL_PI_CONFIG_DIR}/agent/models.json" ]]; then
-	echo "Migrating existing ~/.pi into ${LOCAL_PI_CONFIG_DIR} ..."
-	cp -a "${HOME}/.pi/." "${LOCAL_PI_CONFIG_DIR}/"
+if [[ ! -e "${LOCAL_PI_AGENT_CONFIG_DIR}" ]]; then
+	mkdir -p "${LOCAL_PI_AGENT_CONFIG_DIR}"
+	cp -a "${HOME}/.pi/agent/." "${LOCAL_PI_AGENT_CONFIG_DIR}/"
 fi
 
 exec podman run --rm -it \
