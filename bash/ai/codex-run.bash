@@ -3,7 +3,7 @@ PROJECT_DIR="$(pwd)"
 LOCAL_CODEX_DIR="${PROJECT_DIR}/home/.codex"
 IMAGE="${IMAGE:-codex:latest}"
 
-if [[ ! -e "{LOCAL_CODEX_DIR}" ]]; then
+if [[ ! -e "${LOCAL_CODEX_DIR}" ]]; then
 	mkdir -p "${LOCAL_CODEX_DIR}"
 	cp "${HOME}/.codex/config.toml" "${LOCAL_CODEX_DIR}/"
 	cp "${HOME}/.codex/github_token.txt" "${LOCAL_CODEX_DIR}/"
