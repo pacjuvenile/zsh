@@ -5,7 +5,7 @@ IMAGE="${IMAGE:-pi:latest}"
 
 if [[ ! -e "${LOCAL_PI_AGENT_CONFIG_DIR}" ]]; then
 	mkdir -p "${LOCAL_PI_AGENT_CONFIG_DIR}"
-	# cp -a "${HOME}/.pi/agent/." "${LOCAL_PI_AGENT_CONFIG_DIR}/"
+	cp -a "${HOME}/.pi/agent/." "${LOCAL_PI_AGENT_CONFIG_DIR}/"
 	cp "${HOME}/.pi/github_token.txt" "${LOCAL_PI_AGENT_CONFIG_DIR}/.."
 fi
 
