@@ -1,4 +1,3 @@
-BASH_CONFIG_PATH="${HOME}/dotfiles/zshell/bash"
 ZSH_CONFIG_PATH="${HOME}/dotfiles/zshell/zsh"
 
 # 选项配置

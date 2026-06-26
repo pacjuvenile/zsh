@@ -22,43 +22,6 @@ function ya() {
 	rm -f -- "$tmp"
 }
 
-# 使用opencode
-unction code() {
-	"${BASH_CONFIG_PATH}/ai/opencode-run.bash"
-}
-# 使用codex
-function codex() {
-	"${BASH_CONFIG_PATH}/ai/codex-run.bash"
-}
-# 使用claude
-function claude() {
-	"${BASH_CONFIG_PATH}/ai/claude-run.bash"
-}
-# function claude-withproxy() {
-# 	"${BASH_CONFIG_PATH}/ai/claude-withproxy.bash"
-# }
-# 使用pi
-function pi() {
-	"${BASH_CONFIG_PATH}/ai/pi-run.bash"
-}
-# 使用crush
-function crush() {
-	"${BASH_CONFIG_PATH}/ai/crush-run.bash"
-}
-# # 使用goose
-# function goose() {
-# 	"${BASH_CONFIG_PATH}/ai/goose-run.bash"
-# }
-# # 使用zeroclaw
-# function claw(){
-# 	${BASH_CONFIG_PATH}/ai/zeroclaw-run.bash "$@"
-# }
-# function claw-chat() {
-# 	local name="${1:-default}"
-# 	shift || true
-# 	podman exec -it "zeroclaw-${name}" zeroclaw agent "$@"
-# }
-
 # powershell调用
 function pwsh() {
 	powershell.exe -Command "Start-Process powershell.exe -Verb RunAs -ArgumentList '-Command', '$1' -WindowStyle Hidden"
