@@ -5,10 +5,10 @@ HOST=nixos
 export EDITOR=nvim
 
 # 网络协议
-export http_proxy=http://172.21.160.1:7890
-export HTTP_PROXY=http://172.21.160.1:7890
-export https_proxy=http://172.21.160.1:7890
-export HTTPS_PROXY=http://172.21.160.1:7890
+export http_proxy=http://172.21.160.1:27890
+export HTTP_PROXY=http://172.21.160.1:27890
+export https_proxy=http://172.21.160.1:27890
+export HTTPS_PROXY=http://172.21.160.1:27890
 
 # cd优化
 setopt autocd
