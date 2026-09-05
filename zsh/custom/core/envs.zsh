@@ -19,6 +19,7 @@ AGENT_HARNESSES=(
 	claude
 	pi
 	omp
+	antigravity
 )
 for agent_harness in "${AGENT_HARNESSES[@]}"; do
 	local f="${HOME}/dotfiles/${agent_harness}/${agent_harness}-run.bash"
